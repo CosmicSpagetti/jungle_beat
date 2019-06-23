@@ -35,4 +35,11 @@ class JungleBeatTest < MiniTest::Test
 
     assert_equal 6, jb.count
   end
+
+  def test_will_generate_sound_based_on_nodes
+    jb = JungleBeat.new
+    jb.append("deep doo ditt woo hoo shu")
+
+    assert_equal '', jb.play
+  end
 end 
