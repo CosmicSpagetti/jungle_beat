@@ -61,6 +61,13 @@ class LinkedList
     to_string.include?(data)
   end
 
+  def pop
+    last_node_data = last_node(@head).data
+    node_before_last = get_node_before(@count - 1)
+    @count -= 1
+    node_before_last.next_node = nil
+    last_node_data
+  end
 
   private 
 

@@ -93,4 +93,17 @@ class LinkedListTest < MiniTest::Test
     assert_equal true, list.include?("deep")
     assert_equal false, list.include?("durp")
   end 
+
+  def test_can_pop_last_node_off_list 
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    assert_equal "blop", list.pop
+    assert_equal "shu", list.pop
+    assert_equal "deep woo shi", list.to_string
+  end 
 end 
