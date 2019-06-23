@@ -34,4 +34,26 @@ class LinkedList
     node.next_node = @head 
     @head = node
   end 
+  
+  def insert(position, data)
+    node_before = get_node_before(position)
+    if !node_before.nil?
+      node = Node.new(data)
+      node.next_node = node_before.next_node
+      node_before.next_node = node
+    end
+  end
+
+
+  private 
+
+  def get_node_before(position)
+    node_before = @head
+    position_count = 0
+    until position_count == position - 1
+      position_count += 1
+      node_before = node_before.next_node
+    end
+    node_before 
+  end 
 end 

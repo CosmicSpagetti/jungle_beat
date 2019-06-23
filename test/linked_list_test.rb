@@ -59,4 +59,25 @@ class LinkedListTest < MiniTest::Test
     assert_equal 2, list.count
     assert_equal "doop deep", list.to_string
   end
+
+  def test_can_insert_data_to_any_position_in_list
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    list.insert(1, "woo")
+
+    assert_equal "dop woo plop suu", list.to_string
+  end
+
+  def test_it_can_enter_position_and_how_many_to_return
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    assert_equal "woo shi shu", list.find(1,3)
+  end 
 end 
