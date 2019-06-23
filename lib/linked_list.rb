@@ -57,6 +57,10 @@ class LinkedList
     array_of_final_words.join(" ")
   end 
 
+  def include?(data)
+    to_string.include?(data)
+  end
+
 
   private 
 
