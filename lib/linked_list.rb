@@ -13,7 +13,7 @@ class LinkedList
     if @head.nil?
       @head = node 
     else 
-     @head.next_node = node
+      last_node(@head).next_node = node
     end 
   end 
 
@@ -37,12 +37,25 @@ class LinkedList
   
   def insert(position, data)
     node_before = get_node_before(position)
+    @count += 1
     if !node_before.nil?
       node = Node.new(data)
       node.next_node = node_before.next_node
       node_before.next_node = node
     end
   end
+
+  def find(position, how_many)
+    starting_node = get_node_before(position + 1 )
+    count = 1 # start count at one because it counts the last node so i get 1 too many 
+    array_of_final_words = []
+    while count <= how_many
+      array_of_final_words << starting_node.data 
+      starting_node = starting_node.next_node 
+      count += 1 
+    end 
+    array_of_final_words.join(" ")
+  end 
 
 
   private 
@@ -55,5 +68,13 @@ class LinkedList
       node_before = node_before.next_node
     end
     node_before 
+  end 
+
+  def last_node(node)
+    if node.next_node.nil?
+      return node 
+    else
+      last_node(node.next_node)
+    end
   end 
 end 
